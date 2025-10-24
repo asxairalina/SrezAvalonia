@@ -29,7 +29,7 @@ public partial class ProductsView : UserControl
         try
         {
             _allProducts = App.dbContext.Products
-                .Include(p => p.Type) // ВАЖНО: включаем загрузку типа
+                .Include(p => p.Type) 
                 .Include(p => p.ProductMaterials)
                     .ThenInclude(pm => pm.Material)
                 .ToList();
@@ -38,14 +38,14 @@ public partial class ProductsView : UserControl
 
             foreach (var product in _allProducts)
             {
-                // Если стоимость уже сохранена в Param1, используем её
+               
                 if (product.Param1.HasValue && product.Param1 > 0)
                 {
                     product.CalculatedCost = product.Param1.Value;
                 }
                 else
                 {
-                    // Иначе рассчитываем и сохраняем
+                    
                     decimal calculatedCost = CalculateProductCost(product);
                     product.CalculatedCost = calculatedCost;
                     product.Param1 = calculatedCost;
@@ -67,9 +67,6 @@ public partial class ProductsView : UserControl
         }
     }
 
-    /// <summary>
-    /// Calculate product cost based on used materials
-    /// </summary>
     private decimal CalculateProductCost(Product product)
     {
         if (product?.ProductMaterials == null || !product.ProductMaterials.Any())
@@ -160,7 +157,6 @@ public partial class ProductsView : UserControl
                 var product = _allProducts.FirstOrDefault(p => p.Id == productId);
                 if (product != null)
                 {
-                    // TODO: Implement confirmation dialog
                     App.dbContext.Products.Remove(product);
                     App.dbContext.SaveChanges();
                     LoadProducts();
@@ -194,12 +190,12 @@ public partial class ProductsView : UserControl
             {
                 decimal calculatedCost = CalculateProductCost(product);
                 product.CalculatedCost = calculatedCost;
-                product.Param1 = calculatedCost; // Сохраняем в Param1
+                product.Param1 = calculatedCost;
                 Console.WriteLine($"Product {product.Name}: Cost updated to {calculatedCost:C}");
             }
 
             int changes = App.dbContext.SaveChanges();
-            LoadProducts(); // Перезагружаем данные
+            LoadProducts();
             ShowInfoMessage($"All product costs recalculated successfully. {changes} records updated.");
         }
         catch (Exception ex)

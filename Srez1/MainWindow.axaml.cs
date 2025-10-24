@@ -36,7 +36,7 @@ public partial class MainWindow : Window
 
     private void UpdateButtonStyles(Button activeButton)
     {
-        // Reset all buttons
+        
         ProductsBtn.Background = Brushes.Transparent;
         MaterialsBtn.Background = Brushes.Transparent;
         SuppliersBtn.Background = Brushes.Transparent;
@@ -45,7 +45,7 @@ public partial class MainWindow : Window
         MaterialsBtn.Foreground = new SolidColorBrush(Color.Parse("#546F94"));
         SuppliersBtn.Foreground = new SolidColorBrush(Color.Parse("#546F94"));
 
-        // Set style for active button
+        
         activeButton.Background = new SolidColorBrush(Color.Parse("#546F94"));
         activeButton.Foreground = Brushes.White;
     }

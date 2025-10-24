@@ -51,7 +51,7 @@ public partial class AddEditProductWindow : Window, INotifyPropertyChanged
         CalculateCost();
     }
 
-    // Properties with change notification
+
     public string ProductName
     {
         get => _productName;
@@ -195,14 +195,13 @@ public partial class AddEditProductWindow : Window, INotifyPropertyChanged
     private void BackClick(object? sender, RoutedEventArgs e)
     {
         Console.WriteLine("Back button clicked - returning to products page");
-        this.Close(false); // Закрываем окно без сохранения
+        this.Close(false); 
     }
 
-    // Кнопка "Отмена" - то же самое что "Назад"
     private void CancelClick(object? sender, RoutedEventArgs e)
     {
         Console.WriteLine("Cancel button clicked - closing window");
-        this.Close(false); // Закрываем окно без сохранения
+        this.Close(false); 
     }
 
     // Кнопка "Сохранить" - сохраняет и закрывает
@@ -326,7 +325,7 @@ public partial class AddEditProductWindow : Window, INotifyPropertyChanged
         errorDialog.ShowDialog(this);
     }
 
-    // INotifyPropertyChanged implementation
+  
     public event PropertyChangedEventHandler? PropertyChanged;
 
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
