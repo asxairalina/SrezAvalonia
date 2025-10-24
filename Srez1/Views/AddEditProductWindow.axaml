@@ -1,0 +1,92 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Srez1.Views.AddEditProductWindow"
+        Title="Add Product"
+        Width="500" Height="450"
+        Background="White">
+    
+    <StackPanel Margin="20" Spacing="15">
+        <TextBlock Text="Product Data" FontSize="16" FontWeight="Bold" Foreground="#546F94"/>
+        
+        <!-- Name -->
+        <StackPanel>
+            <TextBlock Text="Наименование продукта *" FontWeight="Bold"/>
+            <TextBox Background="#ABCFCE" BorderBrush="#546F94"
+                    Text="{Binding ProductName}"/>
+        </StackPanel>
+        
+        <!-- Product Type -->
+        <StackPanel>
+            <TextBlock Text="Тип *" FontWeight="Bold"/>
+            <ComboBox Background="#ABCFCE" BorderBrush="#546F94"
+                     ItemsSource="{Binding ProductTypes}"
+                     SelectedItem="{Binding SelectedProductType}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        
+        <!-- ID Display (только для просмотра) -->
+        <StackPanel>
+            <TextBlock Text="ID" FontWeight="Bold"/>
+            <TextBox Background="#ABCFCE" BorderBrush="#546F94"
+                    Text="{Binding ProductId}"
+                    IsReadOnly="True"/>
+        </StackPanel>
+        
+        <!-- Minimum partner price -->
+        <StackPanel>
+            <TextBlock Text="Минимальная стоимость для партнера (р) *" FontWeight="Bold"/>
+            <TextBox Background="#ABCFCE" BorderBrush="#546F94"
+                    Watermark="0.00"
+                    Text="{Binding MinPartnerPrice}"/>
+        </StackPanel>
+        
+        <!-- Roll width -->
+        <StackPanel>
+            <TextBlock Text="Ширина (м) *" FontWeight="Bold"/>
+            <TextBox Background="#ABCFCE" BorderBrush="#546F94"
+                    Watermark="0.00"
+                    Text="{Binding RollWidth}"/>
+        </StackPanel>
+        
+        <!-- Calculated Cost Display -->
+        <Border BorderBrush="#546F94" BorderThickness="2" Background="#FFFACD" Padding="15" CornerRadius="5">
+            <StackPanel Spacing="8">
+                <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                    <TextBlock Text="Стоимость (р):" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock Text="{Binding CalculatedCost}" FontWeight="Bold" FontSize="14" Foreground="#2E8B57"/>
+                </StackPanel>
+                <TextBlock Text="Рассчитана на основе используемых материалов" 
+                          FontSize="11" 
+                          Foreground="Gray" 
+                          HorizontalAlignment="Center"
+                          FontStyle="Italic"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Action buttons -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+            <Button Content="← Назад" 
+                    Background="#E0E0E0" 
+                    Click="BackClick"
+                    Padding="15,8"
+                    MinWidth="80"/>
+            <Button Content="Отмена" 
+                    Background="LightGray" 
+                    Click="CancelClick"
+                    Padding="15,8"
+                    MinWidth="80"/>
+            <Button Content="Сохранить" 
+                    Background="#546F94" 
+                    Foreground="White" 
+                    FontWeight="Bold" 
+                    Click="SaveClick"
+                    Padding="15,8"
+                    MinWidth="80"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

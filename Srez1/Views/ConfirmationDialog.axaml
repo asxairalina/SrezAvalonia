@@ -1,0 +1,29 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Srez1.Views.ConfirmationDialog"
+        Title="Подтверждение действия"
+        Width="400"
+        Height="250"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False">
+    
+    <StackPanel Margin="20" Spacing="15">
+        
+        <TextBlock Text="{Binding DialogMessage}" 
+                  TextWrapping="Wrap"
+                  TextAlignment="Center"
+                  FontWeight="Bold"/>
+        
+        <TextBlock Text="{Binding DialogDetails}" 
+                  TextWrapping="Wrap"
+                  TextAlignment="Center"
+                  Foreground="Gray"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="15">
+            <Button Content="Отмена" Width="80" Click="CancelClick"
+                   Background="LightGray"/>
+            <Button Content="Удалить" Width="80" Click="ConfirmClick"
+                   Background="#FF6B6B" Foreground="White" FontWeight="Bold"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,35 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Srez1.MainWindow"
+        Title="Production Management System"
+        Width="1000" Height="700"
+        Background="White">
+    
+    <DockPanel>
+        <!-- Header -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="#ABCFCE" Height="80">
+            <TextBlock Text="Production Company" FontSize="20" FontWeight="Bold" 
+                      VerticalAlignment="Center" Margin="20,0" Foreground="#546F94"/>
+        </StackPanel>
+
+        <!-- Navigation panel -->
+        <StackPanel DockPanel.Dock="Left" Width="200" Background="#ABCFCE" Margin="0,0,10,0">
+            <TextBlock Text="Navigation" FontSize="16" FontWeight="Bold" Margin="10,20,10,10" Foreground="#546F94"/>
+            
+            <Button x:Name="ProductsBtn" Content="📦 Products" 
+                   Background="#546F94" Foreground="White" FontWeight="Bold"
+                   Margin="10,5" Height="35" Click="NavigateToProducts"/>
+            
+            <Button x:Name="MaterialsBtn" Content="🧱 Materials" 
+                   Background="Transparent" Foreground="#546F94"
+                   Margin="10,5" Height="35" Click="NavigateToMaterials"/>
+            
+            <Button x:Name="SuppliersBtn" Content="🏢 Suppliers" 
+                   Background="Transparent" Foreground="#546F94"
+                   Margin="10,5" Height="35" Click="NavigateToSuppliers"/>
+        </StackPanel>
+
+        <!-- Content area -->
+        <ContentControl x:Name="MainContent" Margin="10"/>
+    </DockPanel>
+</Window>
